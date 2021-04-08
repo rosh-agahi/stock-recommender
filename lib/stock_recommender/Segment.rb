@@ -28,11 +28,12 @@ class Sector
   list.max.to_i
   end
 
-  def self.all
+  def self.display(array_passed = @@all)
   # displays a list of Sectors with index number and percent daily change.
+    arr = array_passed
     puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change"
     puts "---------------------------------------"
-    @@all.each_with_index do |i,index|
+    arr.each_with_index do |i,index|
       x = Sector.max_length - i.namelength
         if index <9
           puts " #{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}"
@@ -44,7 +45,8 @@ class Sector
 
   def self.sorted
     #sorts the table of segments by greatest daily change to lowest and displays the table
-    
+    sorted_list = @@all.sort_by(&:sec_change).reverse
+    self.display(sorted_list)
   end
 
   # def display_top_stocks

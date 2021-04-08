@@ -6,7 +6,7 @@ class StockRecommender::CLI
     puts "welcome"
     SectorScraper.new
     puts "here's the list"
-    Sector.all
+    Sector.display
 
     menu_loop
     #displays sectors, requests selection or exit
@@ -28,10 +28,10 @@ class StockRecommender::CLI
         puts "stock"
         options
       when 'r'
-        Sector.all
+        Sector.display
         options
       when 'sort'
-        puts "sorted list"
+        Sector.sorted
         options
       when 'e'
         break
