@@ -26,10 +26,13 @@ class StockRecommender::CLI
         puts "stock"
         puts "stock"
         puts "stock"
-        puts "\n Select another sector (1-20), show list (r), exit (e)"
+        options
       when 'r'
         Sector.all
-        puts "\n Select another sector (1-20), show list (r), exit (e)"
+        options
+      when 'sort'
+        puts "sorted list"
+        options
       when 'e'
         break
       else
@@ -37,6 +40,10 @@ class StockRecommender::CLI
       end
     end
 
+  end
+
+  def options
+    puts "\n Please select another sector (1-20), show list (r), sort list by % Daily Change (sort), exit (e)"
   end
 
   def goodbye
