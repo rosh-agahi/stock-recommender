@@ -1,0 +1,65 @@
+class Sector
+  # a sector is a category representative of an industry.
+  # a way to group stocks from similar industry categories.
+  attr_accessor :sec_name, :url, :sec_change, :namelength, :stocks
+  @@all =[]
+
+  def initialize(name, url, change)
+  # creates new instance of Sector with data passed through from scraper.
+    @sec_name = name
+    @namelength = name.length.to_i
+    @url = url
+    @sec_change = change
+    @stocks = []
+    save
+  end
+
+  def save
+  # saves instance of Sector to array of all sectors @@all
+    @@all << self
+  end
+
+  def self.max_length
+  # finds the sector with the most characters for space count in display table.
+  list = []
+  @@all.each do |n|
+    list << n.namelength
+  end
+  list.max.to_i
+  end
+
+  def self.all
+  # displays a list of Sectors with index number and percent daily change.
+    puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change"
+    puts "---------------------------------------"
+    @@all.each_with_index do |i,index|
+      x = Sector.max_length - i.namelength
+        if index <9
+          puts " #{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}"
+        else
+          puts "#{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}"
+        end
+      end
+  end
+
+  # def display_top_stocks
+  # # if the suggestion to buy or sell a stock is strongly recommended, it will display these stocks only from a particular sector.
+  #   stocks.each do |s|
+  #     puts "#{s.ticker}, #{s.compname}, #{s.price}"
+  #   end
+  # end
+
+
+#   def self.sector_stocks(index)
+#   # calls on the StockScraper to pull all stocks within a sector.
+#     s = @@all[index]
+#
+#     #new stock scraper
+#     StockScraper.new(s.url)
+#       #feed stocks into an array for this sector
+#
+#     # s.url is the site to scrape
+#     #puts s.display_top_stocks
+#   end
+ 
+end

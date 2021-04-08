@@ -19,3 +19,40 @@
 * need to require the cli class file in the executable file.
 
 ### to run the app, be in the stock-recommender, run "./bin/stock-recommender"
+
+6. set up the interface loop in the cli class
+- welcomes the user
+- provides a list of all stock segments
+- lets the user pick a stock segment to see the stock data
+- lets the user pick another segment, go back to the list, or exit
+  - there are 20 segments. will error out if a number other than 1-20 is selected.
+- upon exit, thanks the user for using the app.
+
+7. set up segment scraper class
+  - uses nokogiri
+  - site = https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/
+
+  -scraper collects:
+  /:site/ --> this is the site above
+  /:doc/ --> creates a doc for nokogiri
+  /:sector/ --> the website displays the segments in a table. each sector has it's own table row.
+    - within each sector, the scraper collects to following to create the display table for the app:
+        - name--> becomes :sec_name
+        - url --> becomes :url
+        - percent change --> becomes :sec_change
+
+
+8. set up segment class
+
+  - segment has:
+  /:sec_name/ --> name of the segment (aka sector --"sec")
+
+  /:url/ --> in tradingview when you click on each of the segments, you are directed to the segment's page where the stocks are listed. this generates the url based on the segment name so that the stocks can be scraped.
+
+  /:sec_change/ --> percentage change from the prior day in value of the segment
+
+  /:namelength/ --> calculated field. length of the segment name; used to create proper spacing in the displayed table
+
+  /:stocks/ --> starts as empty array. list of stocks in the segment. filled in by the stock scraper which visits the segment's own url and scrapes the stocks. 
+
+9. added 7 and 8 to the required files in the environment file
