@@ -68,3 +68,15 @@ can still return to alphabetical list by selecting (r) return or (sort) for sort
 12. github not working...
 at the start of the project, set up a local git repo.
 set up a repository on github with the same name
+* was using the ssh config. changed the https and it worked.
+* couldn't tell because of dark mode. :facepalm:
+
+13. set up stock scraper class
+
+14. set up stock class
+
+Second to last step:
+will need to go through and match all segment/sector... pick one.
+
+last step:
+clean up the interface.

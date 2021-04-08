@@ -57,16 +57,16 @@ class Sector
   # end
 
 
-#   def self.sector_stocks(index)
-#   # calls on the StockScraper to pull all stocks within a sector.
-#     s = @@all[index]
-#
-#     #new stock scraper
-#     StockScraper.new(s.url)
-#       #feed stocks into an array for this sector
-#
-#     # s.url is the site to scrape
-#     #puts s.display_top_stocks
-#   end
+  def self.sector_stocks(index)
+  # calls on the StockScraper to pull all stocks within a sector.
+    s = @@all[index]
+
+    #new stock scraper
+    StockScraper.new(s.url)
+      #feed stocks into an array for this sector
+
+    # s.url is the site to scrape
+    #puts s.display_top_stocks
+  end
 
 end
