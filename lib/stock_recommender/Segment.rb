@@ -42,6 +42,11 @@ class Sector
       end
   end
 
+  def self.sorted
+    #sorts the table of segments by greatest daily change to lowest and displays the table
+    
+  end
+
   # def display_top_stocks
   # # if the suggestion to buy or sell a stock is strongly recommended, it will display these stocks only from a particular sector.
   #   stocks.each do |s|
@@ -61,5 +66,5 @@ class Sector
 #     # s.url is the site to scrape
 #     #puts s.display_top_stocks
 #   end
- 
+
 end

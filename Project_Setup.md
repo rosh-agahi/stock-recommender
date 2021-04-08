@@ -53,6 +53,9 @@
 
   /:namelength/ --> calculated field. length of the segment name; used to create proper spacing in the displayed table
 
-  /:stocks/ --> starts as empty array. list of stocks in the segment. filled in by the stock scraper which visits the segment's own url and scrapes the stocks. 
+  /:stocks/ --> starts as empty array. list of stocks in the segment. filled in by the stock scraper which visits the segment's own url and scrapes the stocks.
 
 9. added 7 and 8 to the required files in the environment file
+
+10. rewrote the interface user input options in a more DRY method called options.
+added the option to sort the sectors in the table. still need the code to sort by daily change.
