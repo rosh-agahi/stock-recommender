@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "recommender/version"
+# this file will require all the other files.
+require_relative "./stock_recommender/version"
+require_relative "./stock_recommender/cli"
 
-module Stock
-  module Recommender
-    class Error < StandardError; end
+module StockRecommender
     # Your code goes here...
-  end
 end
