@@ -1,6 +1,6 @@
 # Stock::Recommender
 
-Stock Examiner Gem
+Stock Recommender App
 
 -A command line interface to review stock performance in multiple market segments.
 
@@ -27,6 +27,8 @@ Classes:
 - StockScraper
 - Segment
 - Stock
+
+
 
 ## Installation
 
