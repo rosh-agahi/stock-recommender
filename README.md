@@ -1,8 +1,32 @@
 # Stock::Recommender
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/stock/recommender`. To experiment with that code, run `bin/console` for an interactive prompt.
+Stock Examiner Gem
 
-TODO: Delete this and the text above, and describe your gem
+-A command line interface to review stock performance in multiple market segments.
+
+1. When the app is run, it opens up tradingview.com/markets/stocks-usa and lists out all sectors in the markets
+2. the user can select the sector they are interested in viewing the stocks for by typing the number of the sector from the list and hitting enter
+3. the app will respond by listing all stocks in the sector.
+  - tradingview also shows recommendations for what to do with the stocks
+      - "Strong Sell"
+      - "Sell"
+      - "Neutral"
+      - "Buy"
+      - "Strong Buy"
+  when the app shows the list of stocks in the sector it will only show the ones that have the recommendation for "Strong Buy."
+
+4. The user will then be in the loop to explore any sector or exit the app.
+
+5. when the user exits the app, they will be thanked for visiting.
+
+### Nokogiri and Open-URI to scrape tradingview website
+
+Classes:
+- CLI
+- SegmentScraper
+- StockScraper
+- Segment
+- Stock
 
 ## Installation
 
