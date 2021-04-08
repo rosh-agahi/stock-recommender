@@ -64,3 +64,7 @@ added the option to sort the sectors in the table. still need the code to sort b
 sorted_list = @@all.sort_by(&:sec_change).reverse
 self.display(sorted_list)
 can still return to alphabetical list by selecting (r) return or (sort) for sorted list
+
+12. github not working...
+at the start of the project, set up a local git repo.
+set up a repository on github with the same name
