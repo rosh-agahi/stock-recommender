@@ -3,7 +3,5 @@
 # load related files
 require './lib/stock_recommender'
 
-puts "hey, I'm running."
 # instantiates a new CLI class and calls it to run the application
 StockRecommender::CLI.new.call
-puts "I ran."
