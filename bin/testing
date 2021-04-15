@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+# load related files
+require './lib/stock_recommender'
+
+require 'nokogiri'
+require 'open-uri'
+
+# class Stock
+#  attr_accessor :ticker, :company, :price, :percentchange, :reco, :sector
+
+#  def initialize(ticker)
+ #  @ticker = ticker
+    # @company = company
+    # @price = price
+    # @percentchange = percentchange
+    # @reco = reco
+    # @sector = sector
+#  end
+
+# end
+
+site = "https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/communications/"
+
+doc = Nokogiri::HTML(open(site))
+
+
+stockrows = doc.css("tbody").css("tr")
+sectorname = "Communications"
+
+ a=0
+ stockrows.each do |stock|
+   ticker = stock.css("td").css("a")[0].text
+   n=2
+   company = stock.css("td").css("span.tv-screener__description").text.strip.split(/\s+/, n+1)[0...n].join(' ')
+   price = stock.css("td")[1].text
+   percentchange = stock.css("td")[2].text
+   reco = stock.css("td")[4].text
+   sector = sectorname
+   puts sectorname
+  # stocks << Stock.new(ticker)
+  # puts stock.ticker
+  a+=1
+  puts "count = #{a}"
+ end
+
+
+# puts things.first
+# things.each do |thing|
+#   detail_one = thing.css("css-query").text
+#   detail_two = thing.css("css-query").attr("href")
+#   detail_three = thing.css("css-query").text.strip
+#   # For testing purposes we can print it straight to our console
+#   # But in our real app we'll want to make a new object with the data eg:
+#   # Thing.new(detail_one, detail_two, detail_three)
+#   puts detail_one, detail_two, detail_three, ""
+# end

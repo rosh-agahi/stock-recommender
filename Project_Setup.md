@@ -1,24 +1,24 @@
-1. use bundler to create the skeleton of the cli application
-  bundle gem stock-recommender
+1. use bundler to create the skeleton of the cli application<br>
+  `bundle gem stock-recommender`
 
 2. added notes re the project to the README
 
-3. added the stock-recommender to the bin folder
+3. added the executable file **stock-recommender** to the bin folder
 
-4. set up the executable file. in bin, added "stock-recommender". included shebang #!/usr/bin/env ruby to ensure that the file uses ruby  
+4. set up the executable file. in bin, added "stock-recommender". included shebang `#!/usr/bin/env ruby` to ensure that the file uses ruby  
 - added executable function using chmod
-- cd bin/
-- ls -lah
-  * -rw-r--r--   1 ragahi  staff    41B Apr  7 19:32 stock-recommender
-- chmod +x stock-recommender
-  * this adds the executable function to this file.
-  * -rwxr-xr-x   1 ragahi  staff    41B Apr  7 19:32 stock-recommender
-  --> allows the computer permissions to execute the file through the ruby interpreter on my behalf.
+- `cd bin/` --> cd to the bin directory
+- `ls -lah` --> shows the permissions
+<br> *-rw-r--r--   1 ragahi  staff    41B Apr  7 19:32 stock-recommender*
+- `chmod +x stock-recommender`
+ --> this adds the executable function to this file.
+  <br> *-rwxr-xr-x   1 ragahi  staff    41B Apr  7 19:32 stock-recommender*
+  <br>Allows the computer permissions to execute the file through the ruby interpreter on my behalf.
 
 5. in the executable file added a reference to call a new instance of the cli class.
 * need to require the cli class file in the executable file.
 
-### to run the app, be in the stock-recommender, run "./bin/stock-recommender"
+**to run the app, `cd` into the stock-recommender directory, run:**<br>`./bin/stock-recommender`
 
 6. set up the interface loop in the cli class
 - welcomes the user
@@ -38,7 +38,7 @@
   /:sector/ --> the website displays the segments in a table. each sector has it's own table row.
     - within each sector, the scraper collects to following to create the display table for the app:
         - name--> becomes :sec_name
-        - url --> becomes :url
+        - url --> becomes :url (the name of each of the sectors already links to the sector's own page.)
         - percent change --> becomes :sec_change
 
 
@@ -72,6 +72,14 @@ set up a repository on github with the same name
 * couldn't tell because of dark mode. :facepalm:
 
 13. set up stock scraper class
+**Add requiring Stock and StockScraper to stock_recommender.rb file**
+
+Stock Scraper initializes with a given url from the Sector `Sector[i].url`
+* uses Nokogiri to visit the site and scrape the following data
+  * each row in the url table of stocks.
+
+
+
 
 14. set up stock class
 

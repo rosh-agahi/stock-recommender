@@ -2,11 +2,10 @@ class Stock
 attr_accessor :ticker, :company, :percent, :action
 @@all = []
 
-  def initialize(ticker,company,percent,action)
+  def initialize(ticker,percent,action)
   @ticker = ticker
-  @company = company
   @percent = percent
-  @action = action
+  @rating = rating
   @@all << self
   end
 

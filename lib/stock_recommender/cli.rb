@@ -22,10 +22,7 @@ class StockRecommender::CLI
     case input
       when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20'
         i = input.to_i - 1
-        Sector.sector_stocks(i)
-        puts "stock"
-        puts "stock"
-        puts "stock"
+        #Sector.sector_stocks(i)
         options
       when 'r'
         Sector.display

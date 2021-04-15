@@ -62,7 +62,7 @@ class Sector
     s = @@all[index]
 
     #new stock scraper
-    StockScraper.new(s.url)
+    StockScraper.new(s.url, s.sec_name)
       #feed stocks into an array for this sector
 
     # s.url is the site to scrape
