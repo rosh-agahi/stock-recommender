@@ -23,7 +23,12 @@ class StockRecommender::CLI
     input = gets.chomp
     case input
       when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20'
-        valid_index_input(input)
+        # valid_index_input(input)
+        i = input.to_i - 1
+        s = Sector.select(i)
+        StockScraper.new(s.url,s.sec_name)
+        Stock.list(s.sec_name)
+        options 
       when 'r'
         Sector.display
         options
@@ -45,7 +50,7 @@ class StockRecommender::CLI
     i = input.to_i - 1
     selectedsector = Sector.showname(i)
     puts "You chose #{selectedsector}."
-    options2
+    buyselloptions
     buy_or_sell_loop
   end
 
@@ -71,7 +76,7 @@ class StockRecommender::CLI
     puts "\n Please select another sector (1-20), show list (r), sort list by % Daily Change (sort), exit (e)"
   end
 
-  def options2
+  def buyselloptions
     puts "\n Please enter the list you wish to see either 'Strong Buy' (b) | 'Strong Sell' (s) | return to list (r)."
   end
 

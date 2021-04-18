@@ -14,6 +14,14 @@ class Sector
     save
   end
 
+  def self.all
+    @@all
+  end
+
+  def self.select(index)
+    @@all[index]
+  end 
+
   def save
   # saves instance of Sector to array of all sectors @@all
     @@all << self

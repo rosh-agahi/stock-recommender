@@ -1,8 +1,8 @@
 class Stock
  attr_accessor :ticker, :company, :price, :percentchange, :reco, :sector
  @@all = []
- 
-  def initialize(ticker)
+
+  def initialize(ticker, company, price, percentchange, reco, sector)
     @ticker = ticker
     @company = company
     @price = price
@@ -20,11 +20,16 @@ class Stock
     @@all << self
   end
 
-  # def list
-  #   puts "Ticker // Company // price // %Change // Recommendation"
-  #    all.each do |stock|
-  #      if stock.sector
-  #   end
-  # end
+  def self.list(sectorname)
+    puts "Ticker // Company // price // %Change // Recommendation"
+
+    for stock in @@all do
+      if stock.sector == sectorname
+        puts stock.ticker
+      else
+        next
+      end
+    end
+  end
 
 end
