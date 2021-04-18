@@ -9,7 +9,7 @@ class Sector
     @sec_name = name
     @namelength = name.length.to_i
     @url = url
-    @sec_change = change
+    @sec_change = change.to_f
     @stocks = []
     save
   end
@@ -17,6 +17,10 @@ class Sector
   def save
   # saves instance of Sector to array of all sectors @@all
     @@all << self
+  end
+
+  def self.showname(index)
+    @@all[index].sec_name
   end
 
   def self.max_length
@@ -36,9 +40,9 @@ class Sector
     arr.each_with_index do |i,index|
       x = Sector.max_length - i.namelength
         if index <9
-          puts " #{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}"
+          puts " #{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}%"
         else
-          puts "#{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}"
+          puts "#{index+1}. #{i.sec_name} #{" " * x}     #{i.sec_change}%"
         end
       end
   end
@@ -57,16 +61,21 @@ class Sector
   # end
 
 
-  def self.sector_stocks(index)
-  # calls on the StockScraper to pull all stocks within a sector.
+  # def self.sector_stocks(index, buy_or_sell_list)
+  # # calls on the StockScraper to pull all stocks within a sector.
+  #   s = @@all[index]
+  #
+  #   #new stock scraper
+  #   StockScraper.new(s.url, s.sec_name)
+  #     #feed stocks into an array for this sector
+  #
+  #   # s.url is the site to scrape
+  #   #puts s.display_top_stocks
+  # end
+
+  def populated?(index)
     s = @@all[index]
-
-    #new stock scraper
-    StockScraper.new(s.url, s.sec_name)
-      #feed stocks into an array for this sector
-
-    # s.url is the site to scrape
-    #puts s.display_top_stocks
+    Stock.all.detect{ |stock| stock.sector == s.sec_name } ? (true): (false)
   end
 
 end
