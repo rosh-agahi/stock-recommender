@@ -4,10 +4,10 @@ class StockRecommender::CLI
 
   def call
     puts "\nWelcome to the Daily Stock Recommendation App!"
-    sleep 1
+    #sleep 1
     SectorScraper.new
     puts "\nHere's today's list of market sectors and how they are performing:\n\n"
-    sleep 1.5
+    #sleep 1.5
     Sector.display
 
     menu_loop
@@ -25,6 +25,7 @@ class StockRecommender::CLI
       when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20'
         i = input.to_i - 1
         s = Sector.select(i)
+        puts "\nYou have selected #{s.sec_name}."
 
         unless Sector.populated?(i)
           StockScraper.new(s.url,s.sec_name)
@@ -40,26 +41,16 @@ class StockRecommender::CLI
         options
       when 'sort'
         Sector.sorted
-        puts "\nPlease note when list is sorted by %change, you must resort alphabetically by pressing 'r' before selecting a sector to explore.\nYou may still press 'e' at this time to exit."
+        puts "\n Please note when list is sorted by % Change, you must resort alphabetically by pressing (r) before selecting a sector to explore.\n You may still press (e) at this time to exit."
       when 'easter egg'
         easter_egg
       when 'e'
         break
-      else
-        puts "error message"
+      else error
       end
     end
 
   end
-
-  def valid_index_input(input)
-    i = input.to_i - 1
-    selectedsector = Sector.showname(i)
-    puts "You chose #{selectedsector}."
-    buyselloptions
-    buy_or_sell_loop
-  end
-
 
   def buy_or_sell_loop
     # #if Sector.populated?(index) == FALSE
@@ -71,7 +62,7 @@ class StockRecommender::CLI
         puts input2
       elsif input2 == "e"
         input2 = "r"
-      else puts "error"
+      else error
       end
     end
     Sector.display
@@ -79,15 +70,19 @@ class StockRecommender::CLI
   end
 
   def options
-    puts "\n Please select another sector (1-20), show list (r), sort list by % Daily Change (sort), exit (e)"
+    puts "\nPlease select one of the following and press enter:\n (1-20) Select another sector by typing its index number\n (r)    Show list of indexed sectors\n (sort) Sort list by % Daily Change\n (e)    Exit"
   end
 
   def buyselloptions
-    puts "\n Please enter the list you wish to see either 'Strong Buy' (b) | 'Strong Sell' (s) | return to list (r)."
+    puts "\nPlease select the list you wish to see and press enter:\n (b) 'Strong Buy'  \n (s) 'Strong Sell'"
+  end
+
+  def error
+    puts "The selection you have made is not valid. Please try again."
   end
 
   def goodbye
-    puts "Thanks for checking in today. Happy Trading!"
+    puts "\n Thanks for checking in today. Happy Trading!"
   end
 
   def easter_egg

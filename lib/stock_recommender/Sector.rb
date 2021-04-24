@@ -43,6 +43,7 @@ class Sector
   def self.display(array_passed = @@all)
   # displays a list of Sectors with index number and percent daily change.
     arr = array_passed
+    puts "\n"
     puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change"
     puts "---------------------------------------"
     arr.each_with_index do |i,index|

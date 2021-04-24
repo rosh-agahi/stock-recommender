@@ -1,48 +1,47 @@
 #!/usr/bin/env ruby
 
-# load related files
-# require './lib/stock_recommender'
+#load related files
+#require './lib/stock_recommender'
 
-# require 'nokogiri'
-# require 'open-uri'
+require 'nokogiri'
+require 'open-uri'
 
 # class Stock
 #  attr_accessor :ticker, :company, :price, :percentchange, :reco, :sector
-
+#
 #  def initialize(ticker)
- #  @ticker = ticker
-    # @company = company
-    # @price = price
-    # @percentchange = percentchange
-    # @reco = reco
-    # @sector = sector
+#   @ticker = ticker
+#     @company = company
+#     @price = price
+#     @percentchange = percentchange
+#     @reco = reco
+#     @sector = sector
 #  end
-
+#
 # end
 
-# site = "https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/communications/"
+site = "https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/communications/"
 
-# doc = Nokogiri::HTML(open(site))
+doc = Nokogiri::HTML(open(site))
 
+stocks = []
+stockrows = doc.css("tbody").css("tr")
+sectorname = "Communications"
 
-# stockrows = doc.css("tbody").css("tr")
-# sectorname = "Communications"
-
-# a=0
-# stockrows.each do |stock|
-#   ticker = stock.css("td").css("a")[0].text
-#   n=2
-#   company = stock.css("td").css("span.tv-screener__description").text.strip.split(/\s+/, n+1)[0...n].join(' ')
-#   price = stock.css("td")[1].text
-#   percentchange = stock.css("td")[2].text
-#   reco = stock.css("td")[4].text
-#   sector = sectorname
-#   puts sectorname
-  # stocks << Stock.new(ticker)
-  # puts stock.ticker
-#  a+=1
-#  puts "count = #{a}"
-# end
+stockrows.each do |stock|
+  ticker = stock.css("td").css("a")[0].text
+  #puts ticker
+  n=3
+  company = stock.css("td").css("span.tv-screener__description").text.strip.gsub(/[^A-Z ]/, '').split(/\s+/, n+1)[0...n].join(' ')
+  puts company
+  #price = stock.css("td")[1].text
+  #percentchange = stock.css("td")[2].text
+  #reco = stock.css("td")[4].text
+  #sector = sectorname
+  #puts sectorname
+  #stocks << Stock.new(ticker)
+  #puts stock.ticker
+end
 
 
 # puts things.first
@@ -56,54 +55,54 @@
 #   puts detail_one, detail_two, detail_three, ""
 # end
 
-stocks = []
-
-class Sector
-  attr_accessor :sec_name, :url, :sec_change
-  @@all = []
-
-  def initialize(sec_name)
-    @sec_name = sec_name
-    @@all << self
-  end
-
-  def self.all
-  @@all
-  end
-
-  def self.populated?(index)
-    s = @@all[index]
-    Stock.all.detect{ |stock| stock.sector == s.sec_name } ? (true): (false)
-  end
-
-
-end
-
-class Stock
-  attr_accessor :ticker, :sector
-  @@all = []
-
-  def initialize(ticker, sector)
-    @ticer = ticker
-    @sector = sector
-    @@all << self
-  end
-
-  def self.all
-  @@all
-  end
-
-end
-
-a = Sector.new("Comms")
-b = Sector.new("Health")
-
-y = Stock.new("APPL", "Comms")
-z = Stock.new("DIS","Comms")
-
-# Sector.all.each { |s| print s.sec_name}
-# Stock.all.each { |t| print t.sector}
-
-# puts Stock.all.detect { |stock| stock.sector == b.sec_name }
-
-puts Sector.populated?(1)
+# stocks = []
+#
+# class Sector
+#   attr_accessor :sec_name, :url, :sec_change
+#   @@all = []
+#
+#   def initialize(sec_name)
+#     @sec_name = sec_name
+#     @@all << self
+#   end
+#
+#   def self.all
+#   @@all
+#   end
+#
+#   def self.populated?(index)
+#     s = @@all[index]
+#     Stock.all.detect{ |stock| stock.sector == s.sec_name } ? (true): (false)
+#   end
+#
+#
+# end
+#
+# class Stock
+#   attr_accessor :ticker, :sector
+#   @@all = []
+#
+#   def initialize(ticker, sector)
+#     @ticer = ticker
+#     @sector = sector
+#     @@all << self
+#   end
+#
+#   def self.all
+#   @@all
+#   end
+#
+# end
+#
+# a = Sector.new("Comms")
+# b = Sector.new("Health")
+#
+# y = Stock.new("APPL", "Comms")
+# z = Stock.new("DIS","Comms")
+#
+# # Sector.all.each { |s| print s.sec_name}
+# # Stock.all.each { |t| print t.sector}
+#
+# # puts Stock.all.detect { |stock| stock.sector == b.sec_name }
+#
+# puts Sector.populated?(1)
