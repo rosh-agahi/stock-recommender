@@ -20,7 +20,7 @@ class Sector
 
   def self.select(index)
     @@all[index]
-  end 
+  end
 
   def save
   # saves instance of Sector to array of all sectors @@all
@@ -81,7 +81,7 @@ class Sector
   #   #puts s.display_top_stocks
   # end
 
-  def populated?(index)
+  def self.populated?(index)
     s = @@all[index]
     Stock.all.detect{ |stock| stock.sector == s.sec_name } ? (true): (false)
   end

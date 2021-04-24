@@ -3,11 +3,11 @@
 class StockRecommender::CLI
 
   def call
-    puts "Welcome to the Daily Stock Recommendation App!"
+    puts "\nWelcome to the Daily Stock Recommendation App!"
     sleep 1
     SectorScraper.new
-    puts "Here's today's list of market sectors and how they are performing:"
-    sleep 1
+    puts "\nHere's today's list of market sectors and how they are performing:\n\n"
+    sleep 1.5
     Sector.display
 
     menu_loop
@@ -16,19 +16,25 @@ class StockRecommender::CLI
   end
 
   def menu_loop
-    puts "Please select a sector (1-20) by typing the number corresponding to it and pressing enter."
+    puts "\nPlease select a sector (1-20) by typing the number corresponding to it and pressing enter."
     puts "If you would like to exit, type e and press enter."
 
     loop do
     input = gets.chomp
     case input
       when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20'
-        # valid_index_input(input)
         i = input.to_i - 1
         s = Sector.select(i)
-        StockScraper.new(s.url,s.sec_name)
-        Stock.list(s.sec_name)
-        options 
+
+        unless Sector.populated?(i)
+          StockScraper.new(s.url,s.sec_name)
+        end
+
+        buyselloptions
+
+        bso_input = gets.chomp
+        Stock.list(s.sec_name,bso_input)
+        options
       when 'r'
         Sector.display
         options

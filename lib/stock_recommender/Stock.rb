@@ -20,12 +20,27 @@ class Stock
     @@all << self
   end
 
-  def self.list(sectorname)
-    puts "Ticker // Company // price // %Change // Recommendation"
+  def self.list(sectorname,qualify)
+    recommended = qualify
+    puts recommended
+    puts "Ticker // Company // price // %Change"
 
+    case qualify
+    when 's'
+      recommended = "Strong Sell"
+    else
+      recommended = "Strong Buy"
+    end
+    puts recommended
     for stock in @@all do
-      if stock.sector == sectorname
-        puts stock.ticker
+      if (stock.sector == sectorname) && (stock.reco == recommended)
+        puts "#{stock.ticker}"
+        puts "#{stock.company}"
+        puts "#{stock.price}"
+        puts "#{stock.percentchange}"
+        puts stock.reco
+        puts stock.sector
+        puts "\n"
       else
         next
       end
