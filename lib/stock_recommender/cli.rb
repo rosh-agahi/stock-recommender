@@ -11,13 +11,12 @@ class StockRecommender::CLI
     Sector.display
 
     menu_loop
-    #displays sectors, requests selection or exit
+    #displays sectors and stocks, requests selection or exit
     goodbye
   end
 
   def menu_loop
-    puts "\nPlease select a sector (1-20) by typing the number corresponding to it and pressing enter."
-    puts "If you would like to exit, type e and press enter."
+    options
 
     loop do
     input = gets.chomp
