@@ -9,5 +9,5 @@ require_relative "./stock_recommender/Stock"
 require_relative "./stock_recommender/StockScraper"
 
 module StockRecommender
-    # Your code goes here...
+  
 end
