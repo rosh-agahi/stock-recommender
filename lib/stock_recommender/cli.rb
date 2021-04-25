@@ -4,10 +4,10 @@ class StockRecommender::CLI
 
   def call
     puts "\nWelcome to the Daily Stock Recommendation App!"
-    #sleep 1
+    sleep 1
     SectorScraper.new
     puts "\nHere's today's list of market sectors and how they are performing:\n\n"
-    #sleep 1.5
+    sleep 1.5
     Sector.display
 
     menu_loop
@@ -41,7 +41,7 @@ class StockRecommender::CLI
         options
       when 'sort'
         Sector.sorted
-        puts "\n Please note when list is sorted by % Change, you must resort alphabetically by pressing (r) before selecting a sector to explore.\n You may still press (e) at this time to exit."
+        options
       when 'easter egg'
         easter_egg
       when 'e'
@@ -70,7 +70,7 @@ class StockRecommender::CLI
   end
 
   def options
-    puts "\nPlease select one of the following and press enter:\n (1-20) Select another sector by typing its index number\n (r)    Show list of indexed sectors\n (sort) Sort list by % Daily Change\n (e)    Exit"
+    puts "\nPlease select one of the following and press enter:\n (1-20) Select another sector by typing its index number\n (r)    Show list of sectors\n (sort) Sort sector list by % Daily Change\n (e)    Exit"
   end
 
   def buyselloptions

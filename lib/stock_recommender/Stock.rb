@@ -30,10 +30,10 @@ class Stock
     list.max.to_i
   end
 
-  def self.list(sectorname,qualify)
-    recommended = qualify
+  def self.list(sectorname,rec)
+    recommended = rec
     puts "\n"
-    case qualify
+    case rec
     when 's'
       recommended = "Strong Sell"
       puts "Showing 'Strong Sell' recommendations for #{sectorname}:"
