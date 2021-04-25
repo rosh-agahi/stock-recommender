@@ -6,7 +6,7 @@ class StockRecommender::CLI
     puts "\nWelcome to the Daily Stock Recommendation App!"
     sleep 1
     SectorScraper.new
-    puts "\nHere's today's list of market sectors and how they are performing:\n\n"
+    puts "\nHere's today's list of market sectors and how they are performing:\n"
     sleep 1.5
     Sector.display
 
@@ -51,23 +51,6 @@ class StockRecommender::CLI
 
   end
 
-  def buy_or_sell_loop
-    # #if Sector.populated?(index) == FALSE
-    # # StockScraper.new()
-    input2 = ""
-    while input2 != "r"
-      input2 = gets.chomp
-      if input2 == "b" || input2 == "s"
-        puts input2
-      elsif input2 == "e"
-        input2 = "r"
-      else error
-      end
-    end
-    Sector.display
-    options
-  end
-
   def options
     puts "\nPlease select one of the following and press enter:\n (1-20) Select another sector by typing its index number\n (r)    Show list of sectors\n (sort) Sort sector list by % Daily Change\n (e)    Exit"
   end
@@ -90,7 +73,7 @@ class StockRecommender::CLI
     sleep 1
     puts "*whip snap*"
     sleep 1
-    gandalf = ['G','a','n','d','a','l','f','!']
+    gandalf = "Gandalf!".split('')
     for l in gandalf
       putc l
       sleep 0.5
