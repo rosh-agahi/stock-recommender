@@ -72,7 +72,7 @@ class StockRecommender::CLI
   end
 
   def goodbye
-    puts "\nThanks for checking in today. Happy Trading!".red
+    puts "\nThanks for checking in today. Happy Trading!".magenta.bold
     puts "*You have now exited the program*\n".light_black.italic
   end
 
