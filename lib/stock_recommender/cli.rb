@@ -3,8 +3,7 @@
 class StockRecommender::CLI
 
   def call
-    puts "\nWelcome to the Daily Stock Recommendation App!"
-    sleep 1
+    welcome_disclaimer
     SectorScraper.new
     puts "\nHere's today's list of market sectors and how they are performing:\n"
     sleep 1.5
@@ -24,7 +23,7 @@ class StockRecommender::CLI
       when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20'
         i = input.to_i - 1
         s = Sector.select(i)
-        puts "\nYou have selected #{s.sec_name}."
+        puts "\nYou have selected #{s.sec_name}.".green
 
         unless Sector.populated?(i)
           StockScraper.new(s.url,s.sec_name)
@@ -51,34 +50,44 @@ class StockRecommender::CLI
 
   end
 
+  def welcome_disclaimer
+    puts "\nWelcome to the Daily Stock Recommendation App!".bold.yellow
+    sleep 0.5
+    system('cat ./lib/stock_recommender/disclaimer.txt | lolcat')
+    sleep 4
+  end
+
   def options
-    puts "\nPlease select one of the following and press enter:\n (1-20) Select another sector by typing its index number\n (r)    Show list of sectors\n (sort) Sort sector list by % Daily Change\n (e)    Exit"
+    puts "\nPlease select one of the following and press enter:".yellow
+    puts " (#{"1-20".green.bold}) Select another sector by typing its index number\n (#{"r".green.bold})    Show list of sectors\n (#{"sort".green.bold}) Sort sector list by % Daily Change\n (#{"e".green.bold})    Exit"
   end
 
   def buyselloptions
-    puts "\nPlease select the list you wish to see and press enter:\n (b) 'Strong Buy'  \n (s) 'Strong Sell'"
+    puts "\nPlease select the list you wish to see and press enter:".yellow
+    puts" (#{"b".green.bold}) 'Strong Buy' or press enter  \n (#{"s".green.bold}) 'Strong Sell'"
   end
 
   def error
-    puts "The selection you have made is not valid. Please try again."
+    puts "The selection you have made is not valid. Please try again.".red
   end
 
   def goodbye
-    puts "\n Thanks for checking in today. Happy Trading!"
+    puts "\nThanks for checking in today. Happy Trading!".red
+    puts "*You have now exited the program*\n".light_black.italic
   end
 
   def easter_egg
     sleep 2
-    puts "\nYou Shall Not Pass!"
+    puts "\nYou Shall Not Pass!".light_black
     sleep 1
-    puts "*whip snap*"
+    puts "*whip snap*".red
     sleep 1
     gandalf = "Gandalf!".split('')
     for l in gandalf
-      putc l
+      putc "#{l}"
       sleep 0.5
     end
-    puts "\nFly you fools!"
+    puts "\nFly you fools!".light_black
     sleep 1
     puts "\n Ok. Now back to our regularly scheduled program."
     sleep 2

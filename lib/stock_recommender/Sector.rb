@@ -46,8 +46,8 @@ class Sector
   # displays a list of Sectors with index number and percent daily change.
     arr = array_passed
     puts "\n"
-    puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change"
-    puts "---------------------------------------"
+    puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change".yellow
+    puts "---------------------------------------".yellow
     arr.each do |i|
       x = Sector.max_length - i.namelength
         if i.indexnum <10

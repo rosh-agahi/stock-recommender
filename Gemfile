@@ -2,7 +2,6 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in stock-recommender.gemspec
-gemspec
-
 gem "rake", "~> 13.0"
+gem "colorize"
+gem "lolcat", "~> 42.24.0"

@@ -36,16 +36,16 @@ class Stock
     case rec
     when 's'
       recommended = "Strong Sell"
-      puts "Showing 'Strong Sell' recommendations for #{sectorname}:"
+      puts "Showing 'Strong Sell' recommendations for #{sectorname}:".yellow
     else
       recommended = "Strong Buy"
-      puts "Showing 'Strong Buy' recommendations for #{sectorname}:"
+      puts "Showing 'Strong Buy' recommendations for #{sectorname}:".yellow
     end
     puts "\n"
 
     sleep 1
-    puts "Ticker  Company#{" "*(Stock.maxcomplength - 5)}    Price     % Change"
-    puts "-" * (Stock.maxcomplength + 35)
+    puts "Ticker  Company#{" "*(Stock.maxcomplength - 5)}    Price     % Change".yellow
+    puts "-".yellow * (Stock.maxcomplength + 35)
 
     #x = spaces
     for t in @@all do

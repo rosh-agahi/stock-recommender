@@ -8,6 +8,9 @@ require_relative "./stock_recommender/SectorScraper"
 require_relative "./stock_recommender/Stock"
 require_relative "./stock_recommender/StockScraper"
 
+require 'colorize'
+require 'lolcat'
+
 module StockRecommender
-  
+
 end
