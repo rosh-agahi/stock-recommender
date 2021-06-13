@@ -27,7 +27,7 @@ doc = Nokogiri::HTML(open(site))
 sector_rows = doc.css("tbody").css("tr")
 
 sector_rows.each do |s|
-  puts s.css("td")[6].text
+  puts 10 - s.css("td")[3].text.length
 end
 
 # stockrows.each do |stock|

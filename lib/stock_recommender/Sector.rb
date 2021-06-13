@@ -10,7 +10,7 @@ class Sector
     @namelength = name.length.to_i
     @url = url
     @stock_count = stock_count.to_i
-    @sec_change = change.to_f
+    @sec_change = change
     @stocks = []
     @indexnum = 0
     save
@@ -47,14 +47,15 @@ class Sector
   # displays a list of Sectors with index number and percent daily change.
     arr = array_passed
     puts "\n"
-    puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change".yellow
-    puts "---------------------------------------".yellow
+    puts "Sectors:#{" "*(Sector.max_length-5)}% Daily Change   Count of Stocks".yellow
+    puts "---------------------------------------------------------".yellow
     arr.each do |i|
       x = Sector.max_length - i.namelength
+      y = 10 - i.sec_change.length
         if i.indexnum <10
-          puts " #{i.indexnum}. #{i.sec_name} #{" " * x}     #{i.sec_change}%"
+          puts " #{i.indexnum}. #{i.sec_name} #{" " * x}     #{i.sec_change}% #{" " * y} #{i.stock_count}"
         else
-          puts "#{i.indexnum}. #{i.sec_name} #{" " * x}     #{i.sec_change}%"
+          puts "#{i.indexnum}. #{i.sec_name} #{" " * x}     #{i.sec_change}% #{" " * y} #{i.stock_count}"
         end
       end
   end
