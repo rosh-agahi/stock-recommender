@@ -1,14 +1,15 @@
 class Sector
   # a sector is a category representative of an industry.
   # a way to group stocks from similar industry categories.
-  attr_accessor :sec_name, :url, :sec_change, :namelength, :stocks, :indexnum
+  attr_accessor :sec_name, :url, :sec_change, :namelength, :stocks, :indexnum, :stock_count
   @@all =[]
 
-  def initialize(name, url, change)
+  def initialize(name, url, change, stock_count)
   # creates new instance of Sector with data passed through from scraper.
     @sec_name = name
     @namelength = name.length.to_i
     @url = url
+    @stock_count = stock_count.to_i
     @sec_change = change.to_f
     @stocks = []
     @indexnum = 0
