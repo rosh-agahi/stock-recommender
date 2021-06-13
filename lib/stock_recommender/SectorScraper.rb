@@ -13,7 +13,8 @@ class SectorScraper
     pchange = s.css("td")[3].text
     name = s.css("a").text
     url = "https://www.tradingview.com"+ s.css("a")[0].attributes["href"].value
-    Sector.new(name, url, pchange)
+    stock_count = s.css("td")[6].text
+    Sector.new(name, url, pchange, stock_count)
     end
   end
 end

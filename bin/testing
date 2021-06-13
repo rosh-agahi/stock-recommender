@@ -20,28 +20,30 @@ require 'open-uri'
 #
 # end
 
-site = "https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/communications/"
+site = "https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/"
 
 doc = Nokogiri::HTML(open(site))
 
-stocks = []
-stockrows = doc.css("tbody").css("tr")
-sectorname = "Communications"
+sector_rows = doc.css("tbody").css("tr")
 
-stockrows.each do |stock|
-  ticker = stock.css("td").css("a")[0].text
-  #puts ticker
-  n=3
-  company = stock.css("td").css("span.tv-screener__description").text.strip.gsub(/[^A-Z ]/, '').split(/\s+/, n+1)[0...n].join(' ')
-  puts company
-  #price = stock.css("td")[1].text
-  #percentchange = stock.css("td")[2].text
-  #reco = stock.css("td")[4].text
-  #sector = sectorname
-  #puts sectorname
-  #stocks << Stock.new(ticker)
-  #puts stock.ticker
+sector_rows.each do |s|
+  puts s.css("td")[6].text
 end
+
+# stockrows.each do |stock|
+#   ticker = stock.css("td").css("a")[0].text
+#   #puts ticker
+#   n=3
+#   company = stock.css("td").css("span.tv-screener__description").text.strip.gsub(/[^A-Z ]/, '').split(/\s+/, n+1)[0...n].join(' ')
+#   puts company
+#   #price = stock.css("td")[1].text
+#   #percentchange = stock.css("td")[2].text
+#   #reco = stock.css("td")[4].text
+#   #sector = sectorname
+#   #puts sectorname
+#   #stocks << Stock.new(ticker)
+#   #puts stock.ticker
+# end
 
 
 # puts things.first
