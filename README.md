@@ -1,6 +1,16 @@
-# Stock::Recommender
+# Stock-Recommender CLI App
 
 Stock Recommender App
+
+Disclaimer:
+Futures, stocks and options trading involves substantial
+risk of loss and is not suitable for every investor. The
+valuation of futures, stocks and options may fluctuate, and,
+as a result, clients may lose more than their original investment. The stock recommendations in this app have been scraped from the
+following website: http://www.tradingview.com
+All trading "recommendations" are used at your own risk.
+
+What is this app:
 
 -A command line interface to review stock performance in multiple market segments.
 
